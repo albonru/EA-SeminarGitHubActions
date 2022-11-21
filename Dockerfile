@@ -1,8 +1,15 @@
-# Container image that runs your code
-FROM alpine:3.10
+FROM node:16
 
-# Copies your code file from your action repository to the filesystem path `/` of the container
-COPY entrypoint.sh /entrypoint.sh
+RUN mkdir -p /usr/src/app
 
-# Code file to execute when the docker container starts up (`entrypoint.sh`)
-ENTRYPOINT ["/entrypoint.sh"]
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 5432
+
+CMD [ "npm", "start" ]
