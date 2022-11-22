@@ -1,9 +1,9 @@
 name: GitHub Actions Seminar Demo
-# to ensure it only runs on pushes to master branch
+# to ensure it only runs on pushes to chosen branch
 on: [push]
   # push:
   #   branches:
-  #     - master
+  #     - branchname
 
 jobs:
   push:
